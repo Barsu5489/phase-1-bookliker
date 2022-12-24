@@ -69,25 +69,27 @@ document.addEventListener("DOMContentLoaded", function() {
                 divData.appendChild(btn)
              }
           
-               
+             btn.addEventListener('click', ()=>{
+                const patchData = {
+                    users:[
 
-            })
-            btn.addEventListener('click', ()=>{
+                        { "id": 1, "username": "pouros" }
+                    ]
+                }
                 console.log('CLICKED')
-                fetch(`http://localhost:3000/books/:${data.id}`, {
+                fetch(`http://localhost:3000/books/${idN}`, {
                     method: 'PATCH',
-                    body: JSON.stringify({
-                        id:1,
-                        username:"pouros"
-                    }),
+                    body: JSON.stringify(patchData),
                     headers:{
-                        'Content-type': 'application/json; charset=UTF-8',
-                        'Accept': 'application/json',
+                        'Content-type': 'application/json',
                     }
                 })
                 .then(res=>res.json())
                 .then(data=>console.log(data))
             })
+
+            })
+           
         })
     
     })
